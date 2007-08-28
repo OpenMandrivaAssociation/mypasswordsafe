@@ -69,7 +69,6 @@ Icon=%{name}
 Terminal=false
 Type=Application
 Categories=X-MandrivaLinux-System-Archiving-Other;Qt;Office;Database;Archiving;
-Encoding=UTF-8
 EOF
 
 install -m755 -d %{buildroot}%{_iconsdir} %{buildroot}%{_miconsdir}
