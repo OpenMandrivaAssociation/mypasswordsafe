@@ -12,6 +12,7 @@ License:	GPL
 Group:		Databases
 URL:		http://www.semanticgap.com/myps/
 Source0:	http://www.semanticgap.com/myps/release/%{Name}-%{version}.src.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt3-devel ImageMagick libxscrnsaver-devel
 
 %description
