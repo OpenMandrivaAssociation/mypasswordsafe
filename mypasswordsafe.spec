@@ -51,13 +51,6 @@ rm -rf %{buildroot}
 %makeinstall PREFIX=%{buildroot}%{_prefix}
 rm -rf %{buildroot}%{_prefix}/share/doc
 
-install -d -m755 %{buildroot}%{_menudir}
-cat << EOF > %{buildroot}%{_menudir}/%{name}
-?package(%{name}):command="%{_bindir}/%{Name}" \
-icon="%{name}.png" \
-needs="X11" section="System/Archiving/Other" \
-title="%{Name}" longtitle="Password Manager" xdg="true"
-EOF
 
 install -d -m755 %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -90,7 +83,6 @@ rm -rf %{buildroot}
 %doc CHANGES COPYING ChangeLog README doc/sshots doc/manual*.html
 %{_bindir}/%{Name}
 %{_datadir}/%{Name}
-%{_menudir}/%{name}
 %{_liconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
