@@ -72,11 +72,15 @@ convert images/keys.png -resize 16x16 %{buildroot}%{_miconsdir}/%{name}.png
 %clean
 rm -rf %{buildroot}
 
+%if %mdkversion < 200900
 %post
 %{update_menus}
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
+%endif
 
 %files
 %defattr(-,root,root)
