@@ -2,7 +2,7 @@
 %define name	mypasswordsafe
 %define Name	MyPasswordSafe
 %define version	20061216
-%define rel	1
+%define rel	2
 
 Summary:	Straight-forward, easy-to-use password manager
 Name:		%name
@@ -12,6 +12,7 @@ License:	GPL
 Group:		Databases
 URL:		http://www.semanticgap.com/myps/
 Source0:	http://www.semanticgap.com/myps/release/%{Name}-%{version}.src.tar.bz2
+Patch0:		mypasswordsafe-debian-fixes.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt3-devel imagemagick libxscrnsaver-devel
 
@@ -33,6 +34,7 @@ has the following features:
 
 %prep
 %setup -q -n %{Name}-%{version}
+%patch0 -p1
 find -type d -name "CVS" | xargs rm -rf
 
 # (ah) Tries to find this header file on cooker, not on 2006.0 though
