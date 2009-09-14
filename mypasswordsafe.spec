@@ -2,7 +2,7 @@
 %define name	mypasswordsafe
 %define Name	MyPasswordSafe
 %define version	20061216
-%define rel	2
+%define rel	3
 
 Summary:	Straight-forward, easy-to-use password manager
 Name:		%name
