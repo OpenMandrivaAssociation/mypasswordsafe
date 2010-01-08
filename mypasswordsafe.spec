@@ -1,20 +1,22 @@
 
 %define name	mypasswordsafe
 %define Name	MyPasswordSafe
-%define version	20061216
-%define rel	3
+%define version	20091018
+%define rel	1
 
 Summary:	Straight-forward, easy-to-use password manager
 Name:		%name
 Version:	%version
 Release:	%mkrel %rel
-License:	GPL
+License:	GPLv2+
 Group:		Databases
 URL:		http://www.semanticgap.com/myps/
-Source0:	http://www.semanticgap.com/myps/release/%{Name}-%{version}.src.tar.bz2
+# http://github.com/sneakin/mypasswordsafe/
+Source0:	%{name}-%{version}.tar.bz2
 Patch0:		mypasswordsafe-debian-fixes.patch
+Patch1:		mypasswordsafe-const-char.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	qt3-devel imagemagick libxscrnsaver-devel
+BuildRequires:	qt4-devel imagemagick libxscrnsaver-devel
 
 %description
 MyPasswordSafe is a straight-forward, easy-to-use password manager
@@ -33,16 +35,11 @@ has the following features:
 - Languages supported: English and French
 
 %prep
-%setup -q -n %{Name}-%{version}
+%setup -q
 %patch0 -p1
-find -type d -name "CVS" | xargs rm -rf
-
-# (ah) Tries to find this header file on cooker, not on 2006.0 though
-touch src/safelistview.h
+%patch1 -p1
 
 %build
-export PATH=$PATH:%{_prefix}/lib/qt3/bin
-export QTDIR=%{_prefix}/lib/qt3
 export CFLAGS="%optflags"
 export CXXFLAGS="%optflags"
 %make PREFIX=%{_prefix}
@@ -86,7 +83,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc CHANGES COPYING ChangeLog README doc/sshots doc/manual*.html
+%doc CHANGES README* doc/sshots doc/manual*.html
 %{_bindir}/%{Name}
 %{_datadir}/%{Name}
 %{_liconsdir}/%{name}.png
