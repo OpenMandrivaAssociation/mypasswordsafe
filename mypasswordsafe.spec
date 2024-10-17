@@ -10,7 +10,7 @@ Version:	%version
 Release:	%mkrel %rel
 License:	GPLv2+
 Group:		Databases
-URL:		http://www.semanticgap.com/myps/
+URL:		https://www.semanticgap.com/myps/
 # http://github.com/sneakin/mypasswordsafe/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		mypasswordsafe-debian-fixes.patch
